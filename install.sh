@@ -70,6 +70,9 @@ for app in ${stow_list}; do
     stow ${app}
 done
 
+reporter "setting custom wallpaper"
+gsettings set org.gnome.desktop.background picture-uri file:///$HOME/dotfiles/wallpaper/seattle.jpg
+
 reporter "Generating user RSA keys"
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
 
