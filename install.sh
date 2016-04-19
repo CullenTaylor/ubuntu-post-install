@@ -52,6 +52,11 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 reporter "removing old config files"
 rm -rf ~/.zshrc ~/.vimrc ~/.vim ~/.gitconfig 
 
+reporter "cloning zsh-syntax-highlighting"
+mkdir ~/dev; mkdir ~/dev/utils; cd ~/dev/utils
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/dev/utils
+cd ~
+
 reporter "grabbing and linking dotfiles"
 dotfiles_repo=https://github.com/mctaylor/dotfiles.git
 dotfiles_destination=~/dotfiles
