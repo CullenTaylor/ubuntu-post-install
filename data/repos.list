@@ -1,3 +1,4 @@
 ppa:graphics-drivers/ppa
 ppa:gwendal-lebihan-dev/hexchat-stable
-sudo apt-add-repository ppa:dolphin-emu/ppa
+ppa:dolphin-emu/ppa
+ppa:ubuntu-toolchain-r/test

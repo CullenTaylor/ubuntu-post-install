@@ -20,11 +20,14 @@ else
   echo "Connection successful"
 fi
 
+reporter "running upgrade"
+sudo apt-get upgrade -y
+
 reporter "removing bloat packages"
 xargs sudo apt-get purge -y < data/bloat.list
 
 reporter "adding dependent repos"
-xargs sudo add-apt-repository -y < data/repos.list 
+xargs sudo add-apt-repository < data/repos.list 
 sudo apt-get update -y
 
 reporter "installing dependendent packages"
@@ -46,20 +49,22 @@ echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sourc
 sudo apt-get -y update
 sudo apt-get -y install spotify-client
 
-reporter "isntalling oh-my-zsh"
+reporter "installing oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 reporter "removing old config files"
-rm -rf ~/.zshrc ~/.vimrc ~/.vim ~/.gitconfig 
+old_configs=".zshrc .vimrc .vim .gitconfig"
+for config in ${old_configs}; do
+    rm -rf $HOME/${config}
+done
 
 reporter "cloning zsh-syntax-highlighting"
-mkdir ~/dev; mkdir ~/dev/utils; cd ~/dev/utils
+mkdir $HOME/dev; mkdir $HOME/dev/utils; cd $HOME/dev/utils
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/dev/utils
-cd ~
 
-reporter "grabbing and linking dotfiles"
-dotfiles_repo=https://github.com/mctaylor/dotfiles.git
-dotfiles_destination=~/dotfiles
+reporter "grabbing and stowing dotfiles"
+dotfiles_repo=https://github.com/CullenTaylor/dotfiles.git
+dotfiles_destination=$HOME
 dotfiles_branch=master
 stow_list="bash git htop vim zsh sounds"
 
