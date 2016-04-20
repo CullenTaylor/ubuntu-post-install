@@ -59,16 +59,16 @@ for config in ${old_configs}; do
 done
 
 reporter "cloning zsh-syntax-highlighting"
-mkdir $HOME/dev; mkdir $HOME/dev/utils; cd $HOME/dev/utils
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ~/dev/utils
+mkdir $HOME/dev; mkdir $HOME/dev/utils; 
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/dev/utils
 
 reporter "grabbing and stowing dotfiles"
 dotfiles_repo=https://github.com/CullenTaylor/dotfiles.git
-dotfiles_destination=$HOME
+dotfiles_destination=$HOME/dotfiles
 dotfiles_branch=master
 stow_list="bash git htop vim zsh sounds"
 
-git clone ${dotfiles_repo} ${dotfiles_destination}
+git clone ${dotfiles_repo} $HOME
 cd ${dotfiles_destination}
 git checkout ${dotfiles_branch}
 for app in ${stow_list}; do
