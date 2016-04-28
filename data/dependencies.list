@@ -1,8 +1,7 @@
+curl
 libxss1
 libappindicator1
 libindicator7
-nvidia-352
-nvidia-settings
 cmake 
 pkg-config 
 gcc-4.9 
