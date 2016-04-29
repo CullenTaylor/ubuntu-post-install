@@ -84,13 +84,17 @@ done
 cd ${HOME}
 
 reporter "installing PIA"
-wget https://www.privateinternetaccess.com/installer/install_ubuntu.sh
-sudo sh ./install_ubuntu.sh
+wget -P /tmp https://www.privateinternetaccess.com/installer/install_ubuntu.sh
+sudo sh ./tmp/install_ubuntu.sh
 
 reporter "setting custom wallpaper"
 gsettings set org.gnome.desktop.background picture-uri file:///$HOME/dotfiles/wallpaper/seattle.jpg
 
 reporter "Generating user RSA keys"
 ssh-keygen -t rsa -N "" -f ~/.ssh/id_rsa
+
+reporter "Cleaning up..."
+rm /tmp/google-chrome*.deb
+rm /tmp/install_ubuntu.sh
 
 echo "Done! Reboot to finish"
