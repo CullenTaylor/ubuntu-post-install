@@ -81,6 +81,11 @@ git checkout ${dotfiles_branch}
 for app in ${stow_list}; do
     stow ${app}
 done
+cd ${HOME}
+
+reporter "installing PIA"
+wget https://www.privateinternetaccess.com/installer/install_ubuntu.sh
+sudo sh ./install_ubuntu.sh
 
 reporter "setting custom wallpaper"
 gsettings set org.gnome.desktop.background picture-uri file:///$HOME/dotfiles/wallpaper/seattle.jpg
