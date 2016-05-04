@@ -13,6 +13,7 @@ set -x
 function install-on-desktop() {
     INSTALL_DIR=$1
     source ${INSTALL_DIR}/functions/reporter.sh
+    source ${INSTALL_DIR}/functions/check-connection.sh
 
     reporter "Checking for curl"
     if [[ $(dpkg-query -W -f='${Status}' curl 2>/dev/null \
