@@ -24,7 +24,7 @@ function main() {
         d)  reporter "Installing desktop configuration"
             install-on-desktop ${INSTALL_DIR}
             ;;
-        r)  reporter "Installing raspberry pi configuration" 
+        r)  reporter "Installing raspberry pi configuration"
             install-on-rpi ${INSTALL_DIR}
             ;;
         dr) echo $"Usage: $0 -{r || d}"
